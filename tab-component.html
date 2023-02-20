@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab component</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f2f2f2;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 18px;
+        }
+        .tab button:hover {
+            background-color: #faa;
+        }
+        .tab button:active {
+            background-color: #afa;
+        }
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #cca;
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tab">
+            <button class="tablink" onclick="openCity(event, 'Man')">
+                <!-- <span class="spn">Man</span> -->
+                <img src="https://www.profilepicture.ai/_nuxt/img/avatar-male.cf02ab0.png" alt="Man" class="imag">
+            </button>
+            <button class="tablink" onclick="openCity(event, 'Woman')">
+                <!-- <span class="spn">Woman</span> -->
+                <img src="https://www.profilepicture.ai/_nuxt/img/avatar-female.0e60cb4.png" alt="Woman" class="imag">
+            </button>
+            <button class="tablink" onclick="openCity(event, 'Cat')">
+                <!-- <span class="spn">Cat</span> -->
+                <img src="https://www.profilepicture.ai/_nuxt/img/avatar-cat.b56097d.png" alt="Cat" class="imag">
+            </button>
+            <button class="tablink" onclick="openCity(event, 'Dog')">
+                <!-- <span class="spn">Dog</span> -->
+                <img src="https://www.profilepicture.ai/_nuxt/img/avatar-dog.cc5fb80.png" alt="Dog" class="imag">
+            </button>
+        </div>
+        
+        <div id="Man" class="tabcontent" style="display: block;">
+            <h3 class="">Man</h3>
+        </div>
+        <div id="Woman" class="tabcontent">
+            <h3 class="">Woman</h3>
+        </div>
+        <div id="Cat" class="tabcontent">
+            <h3 class="">Cat</h3>
+        </div>
+        <div id="Dog" class="tabcontent">
+            <h3 class="">Dog</h3>
+        </div>
+    </div>
+
+    <script>
+        function openCity(evnt, cityName) {
+            var tabcontent, tablink;
+
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (let index = 0; index < tabcontent.length; index++) {
+                const element = tabcontent[index];
+                console.log("element: ", element);
+
+                tabcontent[index].style.display = "none";
+            }
+
+            tablink = document.getElementsByClassName("tablink");
+            for (let index = 0; index < tablink.length; index++) {
+                const element = tablink[index];
+                // tablink[index].className = tablink[index].className.replace("active", "");
+                tablink[index].className = "active";
+            }
+
+            document.getElementById(cityName).style.display = "block";
+            evnt.currentTarget.className += "active";
+        }
+    </script>
+</body>
+</html>
